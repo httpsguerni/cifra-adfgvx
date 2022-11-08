@@ -1,0 +1,57 @@
+
+## terminal ##
+
+pip install numpy
+
+## identação ##
+ctrl A
+alt shift F
+
+
+
+ m = 0
+    while m < len(matriz_senha):
+        for linha in range(len(ordenado[0])):
+            for coluna in range(1):
+               # if matriz_senha[0:m+1,0] == ordenado[linha, coluna]:
+                    #print(ordenado[0])
+                    print(matriz_senha[0],"=",ordenado[0,m])
+                    print(f"matriz_senha[{m}:{0}] = ordenado[{0},{m}]")
+                    m += 1
+                   
+                    #linha+=1
+                    #print(np.where(ordenado == 'C'))
+                    
+                    #armazena_cifra.extend(adfgvx[linha]+adfgvx[coluna])
+
+       # m += 1
+        break
+
+
+          m = 0
+    l = 0
+    while m < len(matriz_senha):
+        for linha in range(5):
+            for coluna in range(5): 
+                if(l >= 4):
+                    l=0   
+                print(f"matriz_senha[{0},{m}] = ordenado[{0},{l}]")
+                l+=1
+
+                
+
+                #print(matriz_senha[0,m], ordenado[0,l])
+                                            
+                          
+                
+               #if matriz_senha[0,m] == ordenado[linha, coluna]:
+                  #  print("relou")
+                  #  print(matriz_senha[0,m],"=",ordenado[linha,coluna])
+                    
+                  #  print(f"matriz_senha[{0},{m}] = ordenado[{linha},{coluna}]")
+                #m += 1
+            
+            
+            
+            break
+           
