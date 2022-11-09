@@ -90,12 +90,8 @@ def ADFGVX():
             while j < 5:
 
                 if (ordenado[linha, coluna] == matriz_senha[linha, coluna]):
-                  # organizar aqui!!
-
-                    print("igual")
-
+                    ordenado[:, l] = matriz_senha[:, coluna]
                 else:
-
                     for k in range(len(ordenado)-1):
                         for l in range(len(ordenado)-1):
 
@@ -103,23 +99,11 @@ def ADFGVX():
 
                                 if (ordenado[k, l] == matriz_senha[linha, coluna]):
 
-                                    ordenado[:, l] = matriz_senha[:, coluna]
-
-                            
-                            #criptografado.extend(ordenado[:,l])
-                            
-        
+                                    ordenado[:, l] = matriz_senha[:, coluna]                         
                         break
-                    
-                        #criptografado.extend(ordenado[:,l])
-                        #print(criptografado)
-
-                        # print("L:",k)
-                       #  print(ordenado[:,k])
 
                 j += 1
                 break
-
         break
 
     print("Matriz Ordenada:")
