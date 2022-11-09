@@ -63,99 +63,58 @@ def ADFGVX():
     ## se o valor da matriz do tamanho (senha x senha) for menor que o valor cifrado da frase, adicionamos espaços vazios no restante da matriz ##
 
         for t in range(c):
-            #print(t)
+            # print(t)
             matriz_senha.append(' ')
             ## depois de preenchida corretamente, transformar o tamanho da matriz do tamanho  de linha e coluna identico à senha ##
             matriz_senha = np.array(list(matriz_senha)).reshape(
                 (len(senha)+1), len(senha))
             # print(matriz_senha)
-            
-            t+=1
 
+            t += 1
+
+        print("Matriz senha:")
         print(matriz_senha)
         print("\n")
 
     ## mudando a ordem da matriz chave ... ##
         ordenado = np.sort(matriz_senha)
-        #ordenado = np.s)
-
+        # ordenado = np.s)
+        print("Matriz Ordenada:")
         print(ordenado)
         print("\n")
-        #print(str(matriz_senha[0:5,0]))
+        
 
-
-    ## checar a posição dos caracteres em relação à matriz-senha original ##
-
-
-    
-
+    ## checar a posição dos caracteres em relação à matriz-senha original e organizar a partir da ordem alfabética da senha ##
 
     j = 0
     for linha in range(len(ordenado)):
         for coluna in range(len(ordenado)+1):
-             
-           
-            #print(linha)
-            #print("linha:",0,"coluna:",coluna)
-            
+
             while j < 5:
-              
 
-               # print(f"ordenado[{linha},{coluna}] = {ordenado[linha,coluna]} & matriz_senha[{linha},{coluna}] =  {matriz_senha[linha,coluna]}")
-               # print(ordenado[0,j])
-               # print("coluna:",coluna)
-              #  print(ordenado[linha,coluna])
-               # print(matriz_senha[linha,coluna])
-              #  print(linha,coluna)
-
-                if(ordenado[linha,coluna] == matriz_senha[linha,coluna]):
-                   # print(f"ordenado[{linha},{coluna}]")
-                   print("igual")
+                if (ordenado[linha, coluna] == matriz_senha[linha, coluna]):
+                  #organizar aqui!!
+                  
+                    print("igual")
 
                 else:
-                   # print(f"ordenado[{linha},{coluna}] = {ordenado[linha,coluna]} & matriz_senha[{linha},{coluna}] =  {matriz_senha[linha,coluna]}")
 
-                   
-                   # i = coluna+1
-                    k = 0
-                    l = 0
+                    for k in range(len(ordenado)-1):
+                        for l in range(len(ordenado)-1):
+                           
 
-                    #print(ordenado[:,l])
-                    guarda = ordenado[:,l]
+                            if k == 0:
 
-                    if(ordenado[k,l] == matriz_senha[linha,coluna]):
-                        
-                       # essa parte está recebendo o valor antigo
+                               if (ordenado[k, l] == matriz_senha[linha, coluna]):
+                                  
+                                   ordenado[:, l] = matriz_senha[:,coluna]
+                                  
 
-                       
-                        
-                        ordenado[:,l] = matriz_senha[:,coluna] ##valor atualizado
-
-                     #   print(guarda)                       
-                        
-                        
-                        #print(ordenado)
-                        
-                        
-                       # print(f"ordenado[{k},{l}] == matriz_senha[{linha},{coluna}]")
-                      #  print(ordenado[k,l], matriz_senha[linha,coluna])
-                 
-                          
-
-                j+=1
+                j += 1
                 break
-           
-            
+
         break
-            
-        
 
-    
-    
     print(ordenado)
-  
-                    
-
-   
 
 ADFGVX()
