@@ -21,7 +21,7 @@ def ADFGVX():
    ## distribuindo os valores da chave que recebemos na matriz 6x6 ##
 
     i, j, k, m = 0, 0, 0, 0
-    armazena_cifra, guarda = [], []
+    armazena_cifra, criptografado = [], []
 
     for i in range(len(a)):
         for j in range(len(a)):
@@ -39,6 +39,7 @@ def ADFGVX():
                 break
 
     ## procurando na matriz cada caractere da frase e cifrando de acordo com a posição no ADFGVX ##
+    print("ADFGVX:")
     print(a)
     print("\n")
 
@@ -79,10 +80,6 @@ def ADFGVX():
     ## mudando a ordem da matriz chave ... ##
         ordenado = np.sort(matriz_senha)
         # ordenado = np.s)
-        print("Matriz Ordenada:")
-        print(ordenado)
-        print("\n")
-        
 
     ## checar a posição dos caracteres em relação à matriz-senha original e organizar a partir da ordem alfabética da senha ##
 
@@ -93,28 +90,49 @@ def ADFGVX():
             while j < 5:
 
                 if (ordenado[linha, coluna] == matriz_senha[linha, coluna]):
-                  #organizar aqui!!
-                  
+                  # organizar aqui!!
+
                     print("igual")
 
                 else:
 
                     for k in range(len(ordenado)-1):
                         for l in range(len(ordenado)-1):
-                           
 
                             if k == 0:
 
-                               if (ordenado[k, l] == matriz_senha[linha, coluna]):
-                                  
-                                   ordenado[:, l] = matriz_senha[:,coluna]
-                                  
+                                if (ordenado[k, l] == matriz_senha[linha, coluna]):
+
+                                    ordenado[:, l] = matriz_senha[:, coluna]
+
+                            
+                            #criptografado.extend(ordenado[:,l])
+                            
+        
+                        break
+                    
+                        #criptografado.extend(ordenado[:,l])
+                        #print(criptografado)
+
+                        # print("L:",k)
+                       #  print(ordenado[:,k])
 
                 j += 1
                 break
 
         break
 
+    print("Matriz Ordenada:")
     print(ordenado)
+    print("\n")
+    print("Criptografado:")
+
+    ## transpondo e removendo a chave da matriz e transformando em uma matriz unidimensional ##
+    criptografado = np.transpose(ordenado)
+    criptografado = np.delete(criptografado, 0 , axis=1).reshape(1, len(criptografado)*len(criptografado))
+    print(str(criptografado).replace("[["," ").replace("]]",'').replace("\n ", '').replace("'",'').replace("\r","").replace(" ",""))
+    print("\n")
+
+    ##decriptação... ##
 
 ADFGVX()
