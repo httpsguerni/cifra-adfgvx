@@ -109,15 +109,21 @@ def ADFGVX():
     print("Matriz Ordenada:")
     print(ordenado)
     print("\n")
-    print("Criptografado:")
+   
 
     ## transpondo e removendo a chave da matriz e transformando em uma matriz unidimensional ##
-    criptografado = np.transpose(ordenado)
-    print(criptografado)
-    criptografado = np.delete(criptografado, 0 , axis=1).reshape(1, len(criptografado)*len(criptografado))
-    print(str(criptografado).replace("[["," ").replace("]]",'').replace("\n ", '').replace("'",'').replace("\r","").replace(" ",""))
+
+    print("Criptografado:")
+    criptografado = np.transpose(ordenado) 
+    #print(criptografado)
+    criptografado = np.delete(criptografado, 0 , axis=1) ##removendo a coluna 0
+    print(str(criptografado).replace("[["," ").replace("]]",'').replace("\n ", '').replace("'",'').replace("\r","").replace(" ","").replace("][",""))
     print("\n")
 
-    ##decriptação... ##
+
+    ######...decriptação...######
+
+
+   
 
 ADFGVX()
