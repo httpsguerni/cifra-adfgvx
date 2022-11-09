@@ -115,9 +115,11 @@ def ADFGVX():
 
     print("Criptografado:")
     criptografado = np.transpose(ordenado) 
+    cifrado = criptografado
     #print(criptografado)
-    criptografado = np.delete(criptografado, 0 , axis=1) ##removendo a coluna 0
-    print(str(criptografado).replace("[["," ").replace("]]",'').replace("\n ", '').replace("'",'').replace("\r","").replace(" ","").replace("][",""))
+    cifrado = np.delete(criptografado, 0 , axis=1) ##removendo a coluna 0
+    cifrado = str(cifrado).replace("[["," ").replace("]]",'').replace("\n ", '').replace("'",'').replace("\r","").replace(" ","").replace("][","")
+    print(cifrado)
     print("\n")
 
 
