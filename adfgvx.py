@@ -124,8 +124,19 @@ def ADFGVX():
 
 
     ######...decriptação...######
+    criptografado = np.transpose(criptografado)
+    #print(criptografado)
 
 
+   # u = 0
+    for linha in range(len(criptografado)-1):
+        for coluna in range(len(criptografado)-1):
+
+           criptografado[linha,coluna] = matriz_senha[linha,coluna]
+       
+        
+            
+    print(criptografado)
    
 
 ADFGVX()
