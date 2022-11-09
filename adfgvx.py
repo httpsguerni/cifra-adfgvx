@@ -21,7 +21,7 @@ def ADFGVX():
    ## distribuindo os valores da chave que recebemos na matriz 6x6 ##
 
     i, j, k, m = 0, 0, 0, 0
-    armazena_cifra = []
+    armazena_cifra, guarda = [], []
 
     for i in range(len(a)):
         for j in range(len(a)):
@@ -88,11 +88,72 @@ def ADFGVX():
 
 
     
-   
-    print("length dessa porra: " ,len(ordenado[0:5]))
 
-  
+
+    j = 0
+    for linha in range(len(ordenado)):
+        for coluna in range(len(ordenado)+1):
+             
+           
+            #print(linha)
+            #print("linha:",0,"coluna:",coluna)
+            
+            while j < 5:
+              
+
+               # print(f"ordenado[{linha},{coluna}] = {ordenado[linha,coluna]} & matriz_senha[{linha},{coluna}] =  {matriz_senha[linha,coluna]}")
+               # print(ordenado[0,j])
+               # print("coluna:",coluna)
+              #  print(ordenado[linha,coluna])
+               # print(matriz_senha[linha,coluna])
+              #  print(linha,coluna)
+
+                if(ordenado[linha,coluna] == matriz_senha[linha,coluna]):
+                   # print(f"ordenado[{linha},{coluna}]")
+                   print("igual")
+
+                else:
+                   # print(f"ordenado[{linha},{coluna}] = {ordenado[linha,coluna]} & matriz_senha[{linha},{coluna}] =  {matriz_senha[linha,coluna]}")
+
+                   
+                   # i = coluna+1
+                    k = 0
+                    l = 0
+
+                    #print(ordenado[:,l])
+                    guarda = ordenado[:,l]
+
+                    if(ordenado[k,l] == matriz_senha[linha,coluna]):
+                        
+                       # essa parte está recebendo o valor antigo
+
+                       
+                        
+                        ordenado[:,l] = matriz_senha[:,coluna] ##valor atualizado
+
+                     #   print(guarda)                       
+                        
+                        
+                        #print(ordenado)
+                        
+                        
+                       # print(f"ordenado[{k},{l}] == matriz_senha[{linha},{coluna}]")
+                      #  print(ordenado[k,l], matriz_senha[linha,coluna])
                  
+                          
+
+                j+=1
+                break
+           
+            
+        break
+            
+        
+
+    
+    
+    print(ordenado)
+  
                     
 
    
