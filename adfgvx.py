@@ -16,7 +16,7 @@ def ADFGVX():
     senha = "CHAVE"[0:26]
     frase = np.array(list("reuniao as 10h".upper().replace(" ", "")))
     a = np.array(list(chave[0:36].replace('j', '').upper())).reshape(6, 6)
-    #matriz_senha = np.array(list(armazena_cifra))
+    # matriz_senha = np.array(list(armazena_cifra))
 
    ## distribuindo os valores da chave que recebemos na matriz 6x6 ##
 
@@ -48,7 +48,7 @@ def ADFGVX():
             for coluna in range(len(a)):
 
                 if frase[m] == a[linha, coluna]:
-                    # print(f"{frase[m]}={adfgvx[linha]+adfgvx[coluna]}")
+                    print(f"{frase[m]}={adfgvx[linha]+adfgvx[coluna]}")
                     armazena_cifra.extend(adfgvx[linha]+adfgvx[coluna])
 
         m += 1
@@ -99,7 +99,7 @@ def ADFGVX():
 
                                 if (ordenado[k, l] == matriz_senha[linha, coluna]):
 
-                                    ordenado[:, l] = matriz_senha[:, coluna]                         
+                                    ordenado[:, l] = matriz_senha[:, coluna]
                         break
 
                 j += 1
@@ -109,34 +109,38 @@ def ADFGVX():
     print("Matriz Ordenada:")
     print(ordenado)
     print("\n")
-   
 
     ## transpondo e removendo a chave da matriz e transformando em uma matriz unidimensional ##
 
-    print("Criptografado:")
-    criptografado = np.transpose(ordenado) 
+    print("Encriptado:")
+    criptografado = np.transpose(ordenado)
     cifrado = criptografado
-    #print(criptografado)
-    cifrado = np.delete(criptografado, 0 , axis=1) ##removendo a coluna 0
-    cifrado = str(cifrado).replace("[["," ").replace("]]",'').replace("\n ", '').replace("'",'').replace("\r","").replace(" ","").replace("][","")
+    cifrado = np.delete(criptografado, 0, axis=1)  # removendo a coluna 0
+    cifrado = str(cifrado).replace("[[", " ").replace("]]", '').replace(
+        "\n ", '').replace("'", '').replace("\r", "").replace(" ", "").replace("][", "")
     print(cifrado)
     print("\n")
 
-
-    ######...decriptação...######
+    ###### ...decriptação...######
     criptografado = np.transpose(criptografado)
-    #print(criptografado)
-
 
    # u = 0
-    for linha in range(len(criptografado)-1):
-        for coluna in range(len(criptografado)-1):
-
-           criptografado[linha,coluna] = matriz_senha[linha,coluna]
-       
-        
-            
+    criptografado = matriz_senha
+    # print(criptografado[1,0:2])
     print(criptografado)
-   
+    criptografado = np.delete(criptografado, 0, axis=0)  # removendo a coluna 0
+    criptografado = str(criptografado).replace("[[", " ").replace("]]", '').replace(
+        "\n ", '').replace("'", '').replace("\r", "").replace(" ", "").replace("][", "")
+    print("frase:", criptografado)
+    print(len(criptografado))
+
+    z = 0
+    while z < len(criptografado):
+        for linha in range(len(adfgvx)):
+            for coluna in range(len(adfgvx)):
+                for i in range(0, len(criptografado)+1, 2):
+                    if (criptografado[i:i+2] == adfgvx[linha]+adfgvx[coluna]):
+                        print(a[linha, coluna], end='')
+
 
 ADFGVX()
