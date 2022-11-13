@@ -9,11 +9,12 @@ string.ascii_lowercase
 def ADFGVX():
 
     adfgvx = np.array(list("ADFGVX"))
+   # descripto = list()
 
     while True:
 
-     # chave = input("Informe a chave de 36 caracteres (alfabeto e letras, ordenadas ou não, sem acentos ou caracteres especiais): ").upper().replace(" ", "")
-        chave = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        chave = input("Informe a chave de 36 caracteres (alfabeto e letras, ordenadas ou não, sem acentos ou caracteres especiais): ").upper(
+        ).replace(" ", "")
         frase = input("Informe a frase a ser criptografada, sem caracteres especiais: ").upper(
         ).replace(" ", "")
         senha = input(
@@ -78,6 +79,7 @@ def ADFGVX():
                 break
 
     ## procurando na matriz cada caractere da frase e cifrando de acordo com a posição no ADFGVX ##
+    print("\n")
     print("ADFGVX:")
     print(a)
     print("\n")
@@ -94,7 +96,7 @@ def ADFGVX():
 
    ## armazenamos o valor cifrado na tabela de acordo com a senha ##
     print("\n")
-    matriz_senha = list(senha)
+    matriz_senha = list(senha.upper())
     matriz_senha.extend(armazena_cifra)
     matriz_senha = list(matriz_senha)
 
@@ -118,14 +120,11 @@ def ADFGVX():
 
         c = len(matriz_senha)
         s = len(matriz_senha)
-        #print("matriz senha:", matriz_senha)
-        # print("len:",len(matriz_senha))
-        b = 0
 
-        while b < len(senha):
-
-            if (c % 7 != 0):
+        while True:
+            if (c % len(senha) != 0):
                 c += 1
+                print(c)
 
             else:
 
@@ -137,14 +136,11 @@ def ADFGVX():
 
                     ## depois de preenchida corretamente, transformar o tamanho da matriz do tamanho  de linha e coluna identico à senha ##
 
-                    # print(matriz_senha)
-
-                    # break
-                    # break
                     t += 1
-
-                b += 1
                 break
+
+                #b += 1
+                # break
 
              #c = len(matriz_senha) - len(senha)
              # print("Cê:",c)
@@ -153,7 +149,8 @@ def ADFGVX():
     if (len(matriz_senha) > ((len(senha)+1)*len(senha))):
         x = len(matriz_senha) / len(senha)
         x = math.ceil(x)
-        matriz_senha = np.array(list(matriz_senha)).reshape(x, len(senha))
+        matriz_senha = np.array(list(matriz_senha)).reshape(int(x), len(senha))
+        matriz_senha = np.array(list(matriz_senha)).reshape(int(x), len(senha))
         ordenado = np.sort(matriz_senha)
      # print(matriz_senha)
 
@@ -163,8 +160,7 @@ def ADFGVX():
         ordenado = np.sort(matriz_senha)
 
     ordenado = np.sort(matriz_senha)
-    print("Matriz senha:")
-    print(matriz_senha)
+
     print("\n")
 
     #ordenado = np.sort(matriz_senha)
@@ -193,6 +189,8 @@ def ADFGVX():
     print(ordenado)
     print("\n")
 
+    descripto = []
+
     ## transpondo e removendo a chave da matriz e transformando em uma matriz unidimensional ##
 
     criptografado = np.transpose(ordenado)
@@ -210,24 +208,25 @@ def ADFGVX():
     criptografado = str(criptografado).replace("[[", " ").replace("]]", '').replace(
         "\n ", '').replace("'", '').replace("\r", "").replace(" ", "").replace("][", "")
     print("frase criptografada: ", criptografado)
-    appendice = list()
-    sorted_phrase_str = str()
     print("\n")
     z = 0
     while z < len(criptografado):
-        for linha in range(len(adfgvx)):
-            for coluna in range(len(adfgvx)):
-                for i in range(0, len(criptografado)+1, 2):
-                    if (criptografado[i:i+2] == adfgvx[linha]+adfgvx[coluna]):
+        for n in range(len(frase)):
+            for linha in range(len(adfgvx)):
+                for coluna in range(len(adfgvx)):
+                    for i in range(0, len(criptografado)+1, 2):
+                        if (criptografado[i:i+2] == adfgvx[linha]+adfgvx[coluna]):
 
-                        appendice.append(a[linha, coluna])
-                        sorted_phrase_lst = sorted(
-                            appendice, key=lambda x: str(frase).find(x))
-                        sorted_phrase_str = ''.join(sorted_phrase_lst)
+                            if (frase[n] == a[linha, coluna]):
 
-                    z += 1
-    print("frase decriptografada: ")
-    print(sorted_phrase_str)
+                                descripto.append(a[linha, coluna])
+                            break
+
+                        z += 1
+
+    descripto = str(descripto).replace("[[", " ").replace("]]", '').replace("\n ", '').replace("'", '').replace(
+        "\r", "").replace(" ", "").replace("][", "").replace(",", "").replace("[", "").replace("]", "")
+    print("frase decriptografada: ", descripto)
 
 
 ADFGVX()
