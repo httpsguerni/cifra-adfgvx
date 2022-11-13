@@ -1,6 +1,5 @@
 {
     "python.linting.pylintEnabled": true,
-    "python.linting.enabled": true,
-    "python.formatting.provider": "black",
-    "python.pythonPath" : "C:\\Users\\Saiury\\AppData\\Local\\Programs\\Python\\Python310"
+    "python.linting.enabled": false,
+    "python.analysis.typeCheckingMode": "basic"
 }
